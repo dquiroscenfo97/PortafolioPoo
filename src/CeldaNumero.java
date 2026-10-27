@@ -10,16 +10,21 @@ public class CeldaNumero extends Celda {
         this.minasAdyacentes = minasAdyacentes;
     }
 
+    //Metodos sobreescritos
     @Override
     public boolean esMina(){
         return false;
     }
 
-    //Metodos de consulta
-    public int getMinasAdyacentes(){
-        return minasAdyacentes;
+    @Override
+    public boolean requiereRevelarVecinas(){
+        return minasAdyacentes == 0;
     }
 
+    @Override
+    public String valorRevelado(){
+        return Integer.toString(minasAdyacentes);
+    }
 
 
 }

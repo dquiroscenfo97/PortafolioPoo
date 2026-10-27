@@ -12,4 +12,14 @@ public class CeldaMina extends Celda {
         return true;
     }
 
+    @Override
+    public boolean requiereRevelarVecinas(){
+        return false;
+    }
+
+    @Override
+    public String valorRevelado(){
+        return "*";
+    }
+
 }

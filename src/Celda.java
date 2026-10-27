@@ -1,10 +1,14 @@
 public abstract class Celda {
     //Atributos (No son static por que deben ser atributos de instancia)
-    //cada celda tiene su propia fila, su propia columna, su propio estado de revelada.
-    protected int fila;
-    protected int columna;
-    protected boolean estaRevelada;
-    protected boolean tieneBandera;
+    //cada celda tiene su propia fila, su propia columna, su propio estado de revelada.)
+    //Se colocan en private por que las subclases no requiere que sean hederados, ya que no se utilizan en ninguno de sus métodos
+    //Me baso en el sisguiente parrafo de las diapositivas de herencia:
+    // " es importante tener en cuenta que si una clase tiene subclases, sus
+    // - atributos de interés que se requiere que sean heredados -deben definirse como protected."
+    private int fila;
+    private int columna;
+    private boolean estaRevelada;
+    private boolean tieneBandera;
 
     //Métodos
 
@@ -32,10 +36,13 @@ public abstract class Celda {
         return tieneBandera;
     }
 
-    public final void alternarBandera() {
-        if (!estaRevelada) {
-            tieneBandera = !tieneBandera;
+    public final boolean alternarBandera() {
+        if (estaRevelada) {
+            return false;
         }
+
+        tieneBandera = !tieneBandera;
+        return true;
     }
 
     public final void revelar() {
@@ -49,5 +56,7 @@ public abstract class Celda {
 
 
     public abstract boolean esMina();
+    public abstract boolean requiereRevelarVecinas();
+    public abstract String valorRevelado();
 
 }
